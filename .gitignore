@@ -288,6 +288,5 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-# Bustom
-CityInfo.API/bin/
-CityInfo.API/obj/
+# MacOS Desktop Services Store file
+.DS_Store
