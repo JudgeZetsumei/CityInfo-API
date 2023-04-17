@@ -27,7 +27,10 @@ namespace CityInfo.API.Controllers
         {
             var city = CitiesDataStore.Current.Cities.FirstOrDefault(x => x.Id == cityId);
             if (city == null)
+            {
+                _logger.LogInformation($"City with id {cityId} wasn't found when accessing points of interest.");
                 return NotFound();
+            }
 
             return Ok(city.PointsOfInterest);
         }
@@ -53,7 +56,7 @@ namespace CityInfo.API.Controllers
             if (city == null)
                 return NotFound();
 
-            // demo purposes ï¿½ to be improved
+            // demo purposes — to be improved
             var maxPointOfInterestId = CitiesDataStore.Current.Cities.SelectMany(
             c => c.PointsOfInterest).Max(p => p.Id);
 
