@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using CityInfo.API.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Controller;
 
 namespace CityInfo.API.Controllers
 {
@@ -39,7 +31,7 @@ namespace CityInfo.API.Controllers
             {
                 _logger.LogCritical($"Exception while getting points of interest for city with id {cityId}.", ex);
                 return StatusCode(500, "A problem happened while handling your request");
-            }                       
+            }
         }
 
         [HttpGet("{pointOfInterestId}", Name = "GetPointOfInterest")]
@@ -76,8 +68,8 @@ namespace CityInfo.API.Controllers
 
             city.PointsOfInterest.Add(finalPointOfInterest);
 
-            return CreatedAtRoute("GetPointOfInterest", 
-                new { cityId = cityId, pointOfInterestId = finalPointOfInterest.Id }, 
+            return CreatedAtRoute("GetPointOfInterest",
+                new { cityId = cityId, pointOfInterestId = finalPointOfInterest.Id },
                 finalPointOfInterest);
         }
 
@@ -109,7 +101,8 @@ namespace CityInfo.API.Controllers
             if (pointOfInterestFromStore == null)
                 return NotFound();
 
-            var pointOfInterestToPatch = new PointOfInterestForUpdateDto() {
+            var pointOfInterestToPatch = new PointOfInterestForUpdateDto()
+            {
                 Name = pointOfInterestFromStore.Name,
                 Description = pointOfInterestFromStore.Description
             };
@@ -134,7 +127,7 @@ namespace CityInfo.API.Controllers
 
             var pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(x => x.Id == pointOfInterestId);
             if (pointOfInterestFromStore == null)
-                return NotFound();            
+                return NotFound();
 
             city.PointsOfInterest.Remove(pointOfInterestFromStore);
 
