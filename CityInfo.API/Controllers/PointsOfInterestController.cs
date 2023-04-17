@@ -53,7 +53,7 @@ namespace CityInfo.API.Controllers
 
             var finalPointOfInterest = new PointOfInterestDto()
             {
-                Id = ++maxPointOfInterestId,
+                Id = maxPointOfInterestId + 1,
                 Name = pointOfInterest.Name,
                 Description = pointOfInterest.Description
             };
