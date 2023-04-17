@@ -13,12 +13,9 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+	<Folder Include="Models\" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Models\" />
-  </ItemGroup>
+	
   <ItemGroup>
     <None Update="Introduction To Cities.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
