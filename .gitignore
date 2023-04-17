@@ -290,3 +290,6 @@ __pycache__/
 
 # MacOS Desktop Services Store file
 .DS_Store
+
+# Application Logging
+CityInfo.API/logs/
