@@ -16,6 +16,12 @@ namespace CityInfo.API.Controllers
     [ApiController]
     public class PointsOfInterestController : ControllerBase
     {
+        private readonly ILogger<PointsOfInterestController> _logger;
+        public PointsOfInterestController(ILogger<PointsOfInterestController> logger)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<PointOfInterestDto>> GetPointsOfInterest(int cityId)
         {
@@ -47,7 +53,7 @@ namespace CityInfo.API.Controllers
             if (city == null)
                 return NotFound();
 
-            // demo purposes — to be improved
+            // demo purposes ï¿½ to be improved
             var maxPointOfInterestId = CitiesDataStore.Current.Cities.SelectMany(
             c => c.PointsOfInterest).Max(p => p.Id);
 
